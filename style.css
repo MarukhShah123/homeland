@@ -160,26 +160,25 @@ body {
 }
 
 /*section-2*/
+/* Section Base */
+.property-section {
+  background-color: #f8f8f8;
+  padding: 40px 60px;
+}
 
-/* Top Filter Bar */
+/* Top Search Filter */
 .filter-container {
   background-color: #2f4c6a;
-  width:85%;
-  padding-left: 40px;
-  padding: 40px;
+  padding: 30px;
   display: flex;
-  gap: 60px;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
- 
 }
-.filter-container  h5{
-        color: grey;
-        font-size: 15px;
-        margin:25px;
-}
+
 .filter-container select,
 .search-btn {
-  padding: 20px 30px;
+  padding: 10px 15px;
   font-size: 14px;
   border: none;
   border-radius: 4px;
@@ -190,7 +189,6 @@ body {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  
 }
 
 .search-btn:hover {
@@ -204,7 +202,6 @@ body {
   align-items: center;
   margin: 30px 0 20px;
   flex-wrap: wrap;
-  animation: fadeIn 1.2s ease;
 }
 
 .left-icons span {
@@ -213,8 +210,14 @@ body {
   cursor: pointer;
 }
 
+.right-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .right-filters a {
-  margin-right: 15px;
   color: #333;
   text-decoration: none;
   font-weight: 500;
@@ -224,13 +227,12 @@ body {
   padding: 5px 10px;
 }
 
-/* Card Rows */
-.card-row, .card-row2, .card-row3 {
+/* Card Layout */
+.card-row {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
-  animation: fadeInUp 1s ease;
 }
 
 /* Individual Card */
@@ -240,15 +242,9 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0,0,0,0.15);
-}
-
-/* Image Section */
+/* Image + Labels */
 .card-img {
   position: relative;
   height: 180px;
@@ -259,14 +255,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.card-img img:hover {
-  transform: scale(1.05);
-}
-
-/* Labels */
 .label {
   position: absolute;
   top: 10px;
@@ -278,9 +268,18 @@ body {
   border-radius: 3px;
 }
 
-.label.sale { background-color: #ff4d4d; }
-.label.rent { background-color: #1abc9c; top: 35px; }
-.label.lease { background-color: #3498db; }
+.label.sale {
+  background-color: #ff4d4d;
+}
+
+.label.rent {
+  background-color: #1abc9c;
+  top: 35px;
+}
+
+.label.lease {
+  background-color: #3498db;
+}
 
 /* Heart Icon */
 .heart {
@@ -296,15 +295,14 @@ body {
   text-align: center;
   color: #666;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.heart.red {
-  background-color: #ff4d4d;
-  color: white;
+.heart.active {
+  color: red;
 }
 
-/* Info Section */
+/* Card Info */
 .card-info {
   padding: 15px;
 }
@@ -334,45 +332,240 @@ body {
   color: #555;
 }
 
-/* ---------------------- */
-/* Animations */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ---------------------- */
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive */
+@media screen and (max-width: 768px) {
   .property-section {
-    padding: 30px 20px;
+    padding: 20px;
+  }
+
+  .filter-container,
+  .sort-container {
+    flex-direction: column;
+    align-items: center;
   }
 
   .card {
     width: 90%;
   }
 
-  .filter-container {
+  .details {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .sort-container {
-    flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    align-items: flex-start;
   }
 }
+
+
+
+/* Card Layout */
+.card-row2{
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual Card */
+.card {
+  background-color: #fff;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Image + Labels */
+.card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 11px;
+  padding: 4px 8px;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.label.sale {
+  background-color: #ff4d4d;
+}
+
+.label.rent {
+  background-color: #1abc9c;
+  top: 35px;
+}
+
+.label.lease {
+  background-color: #3498db;
+}
+
+/* Heart Icon */
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  color: #666;
+}
+
+.heart.red {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* Card Info */
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-info .location {
+  font-size: 13px;
+  color: #888;
+   margin-bottom: 10px;
+}
+
+.card-info .price {
+  font-size: 18px;
+  color: #66cc33;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555;
+}
+
+
+/* Card Layout */
+.card-row3{
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual Card */
+.card {
+  background-color: #fff;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Image + Labels */
+.card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 11px;
+  padding: 4px 8px;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.label.sale {
+  background-color: #ff4d4d;
+}
+
+.label.rent {
+  background-color: #1abc9c;
+  top: 35px;
+}
+
+.label.lease {
+  background-color: #3498db;
+}
+
+/* Heart Icon */
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  color: #666;
+}
+
+.heart.red {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* Card Info */
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-info .location {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.card-info .price {
+  font-size: 18px;
+  color: #66cc33;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555;
+}
+
 
 /*section-3*/
 /* Section container */
